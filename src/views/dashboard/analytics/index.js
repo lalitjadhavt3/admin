@@ -8,10 +8,7 @@ import { List } from 'react-feather'
 import Avatar from '@components/avatar'
 import Timeline from '@components/timeline'
 import AvatarGroup from '@components/avatar-group'
-var iframes = document.querySelectorAll('iframe');
-for (var i = 0; i < iframes.length; i++) {
-  iframes[i].parentNode.removeChild(iframes[i]);
-}
+
 // ** Utils
 import { kFormatter } from '@utils'
 
@@ -41,7 +38,10 @@ import '@styles/react/libs/charts/apex-charts.scss'
 const AnalyticsDashboard = () => {
   // ** Context
   const { colors } = useContext(ThemeColors)
-
+  var iframes = document.querySelectorAll('iframe');
+  for (var i = 0; i < iframes.length; i++) {
+    iframes[i].parentNode.removeChild(iframes[i]);
+  }
   // ** Vars
   const avatarGroupArr = [
     {
