@@ -1,17 +1,15 @@
 // ** React Imports
 import { Fragment, useState, forwardRef } from 'react'
-
+import { data } from '../data';
 // ** Table Data & Columns
-import { data, columns } from '../data'
-
+import { useEffect } from 'react'
 // ** Add New Modal Component
 import AddNewModal from './AddNewModal'
-
 // ** Third Party Components
 import ReactPaginate from 'react-paginate'
 import DataTable from 'react-data-table-component'
-import { ChevronDown, Share, Printer, FileText, File, Grid, Copy, Plus } from 'react-feather'
-
+import { ChevronDown, Share, Printer, FileText, File, Grid, Copy, Plus, Avatar } from 'react-feather'
+import axios from 'axios';
 // ** Reactstrap Imports
 import {
   Row,
@@ -43,7 +41,124 @@ const DataTableWithButtons = () => {
   const [modal, setModal] = useState(false)
   const [currentPage, setCurrentPage] = useState(0)
   const [searchValue, setSearchValue] = useState('')
-  const [filteredData, setFilteredData] = useState([])
+  const [filteredData, setFilteredData] = useState([]);
+  const [data2, setData] = useState({});
+  const columns = [
+    {
+      name: 'ID',
+      sortable: true,
+      maxWidth: '100px',
+      selector: row => row.id
+    },
+    {
+
+      name: 'Image',
+      maxWidth: '150px',
+      sortable: row => row.borrowername,
+      cell: row => (
+        <div className='d-flex align-items-center'>
+
+          <img src={row.image} style={{ width: '100px' }} />
+
+
+        </div>
+      )
+
+    },
+    {
+
+      name: 'Name',
+
+      sortable: row => row.borrowername,
+      cell: row => (
+        <div className='d-flex align-items-center'>
+
+          <div className='user-info text-truncate ms-1'>
+            <span className='d-block fw-bold text-truncate'>{row.borrowername}</span>
+
+          </div>
+        </div>
+      )
+
+    },
+    {
+
+      name: 'City',
+
+      sortable: row => row.borrowercity,
+      cell: row => (
+        <div className='d-flex align-items-center'>
+
+          <div className='user-info text-truncate ms-1'>
+            <span className='d-block fw-bold text-truncate'>{row.borrowercity}</span>
+
+          </div>
+        </div>
+      )
+
+    },
+    {
+
+      name: 'Nature of Property',
+
+      sortable: row => row.natureofproperty,
+      cell: row => (
+        <div className='d-flex align-items-center'>
+
+          <div className='user-info text-truncate ms-1'>
+            <span className='d-block fw-bold text-truncate'>{row.natureofproperty}</span>
+
+          </div>
+        </div>
+      )
+
+    },
+    {
+
+      name: 'Area',
+
+      sortable: row => row.areaproperty,
+      cell: row => (
+        <div className='d-flex align-items-center'>
+
+          <div className='user-info text-truncate ms-1'>
+            <span className='d-block fw-bold text-truncate'>{row.areaproperty} [{row.unitofmeasurement}] </span>
+
+          </div>
+        </div>
+      )
+
+    },
+    {
+
+      name: 'Actions',
+
+      sortable: row => row.areaproperty,
+      cell: row => (
+        <div className='d-flex align-items-center'>
+
+          <div className='user-info text-truncate ms-1'>
+            <a href={"editproperty/" + row.id} type='button' className='btn btn-info '>Edit</a>
+          </div>
+        </div>
+      )
+
+    },
+
+
+
+  ];
+  useEffect(() => {
+    async function getToken() {
+      axios.get('https://lalitjadhav.in/adminapi/getProperty.php').then(response => {
+        setData(response.data['data']);
+
+      })
+    }
+    getToken();
+  }, [])
+
+
 
   // ** Function to handle Modal toggle
   const handleModal = () => setModal(!modal)
@@ -63,24 +178,14 @@ const DataTableWithButtons = () => {
     }
 
     if (value.length) {
-      updatedData = data.filter(item => {
+      updatedData = data2.filter(item => {
+
         const startsWith =
-          item.full_name.toLowerCase().startsWith(value.toLowerCase()) ||
-          item.post.toLowerCase().startsWith(value.toLowerCase()) ||
-          item.email.toLowerCase().startsWith(value.toLowerCase()) ||
-          item.age.toLowerCase().startsWith(value.toLowerCase()) ||
-          item.salary.toLowerCase().startsWith(value.toLowerCase()) ||
-          item.start_date.toLowerCase().startsWith(value.toLowerCase()) ||
-          status[item.status].title.toLowerCase().startsWith(value.toLowerCase())
+          item.borrowername.toLowerCase().startsWith(value.toLowerCase()) ||
+          item.id.toLowerCase().startsWith(value.toLowerCase())
 
         const includes =
-          item.full_name.toLowerCase().includes(value.toLowerCase()) ||
-          item.post.toLowerCase().includes(value.toLowerCase()) ||
-          item.email.toLowerCase().includes(value.toLowerCase()) ||
-          item.age.toLowerCase().includes(value.toLowerCase()) ||
-          item.salary.toLowerCase().includes(value.toLowerCase()) ||
-          item.start_date.toLowerCase().includes(value.toLowerCase()) ||
-          status[item.status].title.toLowerCase().includes(value.toLowerCase())
+          item.borrowername.toLowerCase().includes(value.toLowerCase())
 
         if (startsWith) {
           return startsWith
@@ -219,7 +324,9 @@ const DataTableWithButtons = () => {
           </Col>
         </Row>
         <div className='react-dataTable'>
-          <DataTable
+          {console.log(data)}
+          {console.log(data2)}
+          {data2.length > 0 && (<DataTable
             noHeader
             pagination
             selectableRows
@@ -229,9 +336,9 @@ const DataTableWithButtons = () => {
             sortIcon={<ChevronDown size={10} />}
             paginationDefaultPage={currentPage + 1}
             paginationComponent={CustomPagination}
-            data={searchValue.length ? filteredData : data}
+            data={searchValue.length ? filteredData : data2}
             selectableRowsComponent={BootstrapCheckbox}
-          />
+          />)}
         </div>
       </Card>
       <AddNewModal open={modal} handleModal={handleModal} />

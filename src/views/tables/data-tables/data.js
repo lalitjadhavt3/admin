@@ -23,7 +23,8 @@ export let data
 
 // ** Get initial Data
 axios.get('/api/datatables/initial-data').then(response => {
-  data = response.data
+  data = response.data;
+
 })
 
 // ** Table Zero Config Column

@@ -31,7 +31,7 @@ const MultipleColumnForm = () => {
   const [noofbathroom, setBathroom] = useState(0)
   const [noofbedroom, setBedroom] = useState(0);
 
- // const [amenities, setAmenities] = useState("");
+  // const [amenities, setAmenities] = useState("");
   const [lift, setLift] = useState(false);
   const [swimmingpool, setSp] = useState(false);
   const [parkingarea, setPa] = useState(false);
@@ -48,13 +48,13 @@ const MultipleColumnForm = () => {
   const [marketvalue, setMarketValue] = useState(0);
   const [muncipaldue, setMuncipalD] = useState(0);
   const [otherdue, setOtherDue] = useState(0);
-  
+
   const [newimages, setImages] = useState({});
-  
+
   const submitHandler = (e) => {
     e.preventDefault();
     //console.log(boundarywall);
-   
+
 
     const formData = new FormData();
     formData.append("borrowername", bName);
@@ -65,36 +65,36 @@ const MultipleColumnForm = () => {
     formData.append("unitofmeasurement", uom);
     formData.append("ageofbuilding", agebuilding);
     formData.append("areaofproperty", areaproperty);
-    
-    formData.append("floors",floors);
-  formData.append("totalfloors",totalfloors);
-  formData.append("boundarywall",boundarywall);
-  //formData.append("specifications",specifications);
-  formData.append("noofbalcony",noofbalcony);
-  formData.append("noofbathroom",noofbathroom);
-  formData.append("noofbedroom",noofbedroom);
 
- // formData.append("amenities",amenities);
-  formData.append("lift",lift);
-  formData.append("swimmingpool",swimmingpool);
-  formData.append("parkingarea",parkingarea);
-  formData.append("Indoorgames",Indoorgames);
+    formData.append("floors", floors);
+    formData.append("totalfloors", totalfloors);
+    formData.append("boundarywall", boundarywall);
+    //formData.append("specifications",specifications);
+    formData.append("noofbalcony", noofbalcony);
+    formData.append("noofbathroom", noofbathroom);
+    formData.append("noofbedroom", noofbedroom);
 
-  formData.append("distance_hospital",distance_hospital);
-  formData.append("distance_school",distance_school);
-  formData.append("distance_railway",distance_railway);
-  formData.append("distance_airport",distance_airport);
-  formData.append("distance_atm",distance_atm);
-  //formData.append("distance",distance);
-  //formData.append("encum",encum);
-  formData.append("ourprice",ourprice);
-  formData.append("marketvalue",marketvalue);
-  formData.append("muncipaldue",muncipaldue);
-  formData.append("otherdue",otherdue);
-  for (let i = 0 ; i < newimages.length ; i++) {
-    formData.append("prop_images", newimages[i]);
-}
-    
+    // formData.append("amenities",amenities);
+    formData.append("lift", lift);
+    formData.append("swimmingpool", swimmingpool);
+    formData.append("parkingarea", parkingarea);
+    formData.append("Indoorgames", Indoorgames);
+
+    formData.append("distance_hospital", distance_hospital);
+    formData.append("distance_school", distance_school);
+    formData.append("distance_railway", distance_railway);
+    formData.append("distance_airport", distance_airport);
+    formData.append("distance_atm", distance_atm);
+    //formData.append("distance",distance);
+    //formData.append("encum",encum);
+    formData.append("ourprice", ourprice);
+    formData.append("marketvalue", marketvalue);
+    formData.append("muncipaldue", muncipaldue);
+    formData.append("otherdue", otherdue);
+    for (let i = 0; i < newimages.length; i++) {
+      formData.append("prop_images[]", newimages[i]);
+    }
+
     axios({
       method: 'post',
       url: 'https://lalitjadhav.in/adminapi/createProperty.php',
@@ -246,30 +246,30 @@ const MultipleColumnForm = () => {
                   <CardTitle tag="h4">Boundary Wall</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  
-                    <div className="demo-inline-spacing">
-                      <div className="form-check">
-                        <Input
-                          type="radio"
-                          id="ex1-active"
-                          name="ex1"
-                          value={'yes'}
-                          required
-                          onChange={(e) => setBoundaryWall(e.target.value)}
-                        />
-                        <Label className="form-check-label" for="ex1-active">
-                          Yes
-                        </Label>
-                      </div>
-                      <div className="form-check">
-                        <Input type="radio" name="ex1" id="ex1-inactive" required value={'no'}
-                          onChange={(e) => setBoundaryWall(e.target.value)} />
-                        <Label className="form-check-label" for="ex1-inactive">
-                          No
-                        </Label>
-                      </div>
+
+                  <div className="demo-inline-spacing">
+                    <div className="form-check">
+                      <Input
+                        type="radio"
+                        id="ex1-active"
+                        name="ex1"
+                        value={'yes'}
+                        required
+                        onChange={(e) => setBoundaryWall(e.target.value)}
+                      />
+                      <Label className="form-check-label" for="ex1-active">
+                        Yes
+                      </Label>
                     </div>
-                 
+                    <div className="form-check">
+                      <Input type="radio" name="ex1" id="ex1-inactive" required value={'no'}
+                        onChange={(e) => setBoundaryWall(e.target.value)} />
+                      <Label className="form-check-label" for="ex1-inactive">
+                        No
+                      </Label>
+                    </div>
+                  </div>
+
                 </CardBody>
               </Card>
               {/* <Input type='text' name='boundarywall'  onChange={(e) => setBoundaryWall(e.target.value)}  placeholder='State' /> */}
@@ -329,58 +329,58 @@ const MultipleColumnForm = () => {
                   <CardTitle tag="h4">Amenities</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  
-                    <div className="demo-inline-spacing">
-                      <div className="form-check form-check-inline">
-                        <Input
-                          type="checkbox"
-                          
-                         
-                          
-                          onChange={(e) => setLift(e.target.value)}
-                        />
-                        <Label
-                          for="basic-cb-checked"
-                          className="form-check-label"
-                          
-                        >
-                          Lift
-                        </Label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <Input type="checkbox"
-                          onChange={(e) => setSp(e.target.value)} />
-                        <Label
-                          for="basic-cb-unchecked"
-                          className="form-check-label"
-                          
-                        >
-                          Swimming Pool
-                        </Label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <Input type="checkbox"  onChange={(e) => setIg(e.target.value)} />
-                        <Label
-                          for="basic-cb-unchecked"
-                          className="form-check-label"
-                         
-                        >
-                          Indoor Game
-                        </Label>
-                      </div>
 
-                      <div className="form-check form-check-inline">
-                        <Input type="checkbox" onChange={(e) => setPa(e.target.value)} />
-                        <Label
-                          for="basic-cb-unchecked"
-                          className="form-check-label"
-                         
-                        >
-                          Parking Area
-                        </Label>
-                      </div>
+                  <div className="demo-inline-spacing">
+                    <div className="form-check form-check-inline">
+                      <Input
+                        type="checkbox"
+
+
+
+                        onChange={(e) => setLift(e.target.value)}
+                      />
+                      <Label
+                        for="basic-cb-checked"
+                        className="form-check-label"
+
+                      >
+                        Lift
+                      </Label>
                     </div>
-                  
+                    <div className="form-check form-check-inline">
+                      <Input type="checkbox"
+                        onChange={(e) => setSp(e.target.value)} />
+                      <Label
+                        for="basic-cb-unchecked"
+                        className="form-check-label"
+
+                      >
+                        Swimming Pool
+                      </Label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <Input type="checkbox" onChange={(e) => setIg(e.target.value)} />
+                      <Label
+                        for="basic-cb-unchecked"
+                        className="form-check-label"
+
+                      >
+                        Indoor Game
+                      </Label>
+                    </div>
+
+                    <div className="form-check form-check-inline">
+                      <Input type="checkbox" onChange={(e) => setPa(e.target.value)} />
+                      <Label
+                        for="basic-cb-unchecked"
+                        className="form-check-label"
+
+                      >
+                        Parking Area
+                      </Label>
+                    </div>
+                  </div>
+
                 </CardBody>
               </Card>
               {/* <Input type='text' name='amenities'  onChange={(e) => setAmenities(e.target.value)}  placeholder='State' /> */}
@@ -469,7 +469,7 @@ const MultipleColumnForm = () => {
                 name="otherdue"
                 onChange={(e) => setOtherDue(e.target.value)}
               />
-            
+
               {/* <Input type='number' name='encum'  onChange={(e) => setEncum(e.target.value)}  placeholder='State' /> */}
             </Col>
 
@@ -485,7 +485,7 @@ const MultipleColumnForm = () => {
                       <Label className="form-label" for="inputFile">
                         Select Multiple Images (600x400 px. max 5mb per image)
                       </Label>
-                      <Input type="file" multiple id="inputFile" name="images"  onChange={(e) => setImages(e.target.files)}/>
+                      <Input type="file" multiple id="inputFile" name="images" onChange={(e) => setImages(e.target.files)} />
                     </Col>
                   </Row>
                 </CardBody>
