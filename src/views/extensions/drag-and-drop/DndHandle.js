@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // ** Third Party Components
-import { ReactSortable } from 'react-sortablejs'
+
 
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, CardText, Row, Col, ListGroupItem } from 'reactstrap'
@@ -71,43 +71,11 @@ const DndMultiple = () => {
         <Row id='dd-with-handle'>
           <Col md='6' sm='12'>
             <h4 className='my-1'>List One</h4>
-            <ReactSortable
-              tag='ul'
-              className='list-group sortable'
-              group='shared-handle-group'
-              handle='.handle'
-              list={listArr1}
-              setList={setListArr1}
-            >
-              {listArr1.map(item => {
-                return (
-                  <ListGroupItem key={item.id}>
-                    <span className='handle'>+</span>
-                    {item.content}
-                  </ListGroupItem>
-                )
-              })}
-            </ReactSortable>
+
           </Col>
           <Col md='6' sm='12'>
             <h4 className='my-1'>People Group 2</h4>
-            <ReactSortable
-              tag='ul'
-              className='list-group sortable'
-              group='shared-handle-group'
-              handle='.handle'
-              list={listArr2}
-              setList={setListArr2}
-            >
-              {listArr2.map(item => {
-                return (
-                  <ListGroupItem className='draggable' key={item.id}>
-                    <span className='handle'>+</span>
-                    {item.content}
-                  </ListGroupItem>
-                )
-              })}
-            </ReactSortable>
+
           </Col>
         </Row>
       </CardBody>

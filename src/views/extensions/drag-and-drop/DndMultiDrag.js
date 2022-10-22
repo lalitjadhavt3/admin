@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // ** Third Party Components
-import { ReactSortable } from 'react-sortablejs'
+
 import { Sortable, MultiDrag } from 'sortablejs'
 
 // ** Reactstrap Imports
@@ -109,68 +109,11 @@ const DndMultiDrag = () => {
         <Row>
           <Col md='6' sm='12'>
             <h4 className='my-1'>People Group 1</h4>
-            <ReactSortable
-              tag='ul'
-              multiDrag
-              list={listArr1}
-              setList={setListArr1}
-              group='shared-multi-drag-group'
-              className='list-group list-group-flush sortable'
-            >
-              {listArr1.map(item => {
-                return (
-                  <ListGroupItem className='draggable' key={item.id}>
-                    <div className='d-flex align-items-center'>
-                      <div>
-                        <img
-                          width='50'
-                          height='50'
-                          src={item.img}
-                          className='rounded-circle me-2'
-                          alt='Generic placeholder image'
-                        />
-                      </div>
-                      <div>
-                        <h5 className='mt-0'>{item.name}</h5>
-                        {item.content}
-                      </div>
-                    </div>
-                  </ListGroupItem>
-                )
-              })}
-            </ReactSortable>
+
           </Col>
           <Col md='6' sm='12'>
             <h4 className='my-1'>People Group 2</h4>
-            <ReactSortable
-              tag='ul'
-              list={listArr2}
-              setList={setListArr2}
-              group='shared-multi-drag-group'
-              className='list-group list-group-flush sortable'
-            >
-              {listArr2.map(item => {
-                return (
-                  <ListGroupItem className='draggable' key={item.id}>
-                    <div className='d-flex align-items-center'>
-                      <div>
-                        <img
-                          width='50'
-                          height='50'
-                          src={item.img}
-                          className='rounded-circle me-2'
-                          alt='Generic placeholder image'
-                        />
-                      </div>
-                      <div>
-                        <h5 className='mt-0'>{item.name}</h5>
-                        {item.content}
-                      </div>
-                    </div>
-                  </ListGroupItem>
-                )
-              })}
-            </ReactSortable>
+
           </Col>
         </Row>
       </CardBody>

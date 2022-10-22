@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // ** Third Party Components
-import { ReactSortable } from 'react-sortablejs'
+
 
 // ** Images
 import img1 from '@src/assets/images/portrait/small/avatar-s-12.jpg'
@@ -59,29 +59,7 @@ const DndListGroup = () => {
         <CardText>
           The most basic list group is simply an unordered list with list items, and the proper classes.
         </CardText>
-        <ReactSortable tag='ul' className='list-group' list={listArr} setList={setListArr}>
-          {listArr.map(item => {
-            return (
-              <ListGroupItem className='draggable' key={item.name}>
-                <div className='d-flex align-items-center'>
-                  <div>
-                    <img
-                      src={item.img}
-                      className='rounded-circle me-2'
-                      alt='Generic placeholder image'
-                      height='50'
-                      width='50'
-                    />
-                  </div>
-                  <div>
-                    <h5 className='mt-0'>{item.name}</h5>
-                    {item.content}
-                  </div>
-                </div>
-              </ListGroupItem>
-            )
-          })}
-        </ReactSortable>
+
       </CardBody>
     </Card>
   )

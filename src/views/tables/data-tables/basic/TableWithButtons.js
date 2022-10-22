@@ -31,10 +31,13 @@ import {
 // ** Bootstrap Checkbox Component
 const BootstrapCheckbox = forwardRef((props, ref) => (
   <div className='form-check'>
-    <Input type='checkbox' ref={ref} {...props} />
+
   </div>
 ))
-
+var iframes = document.querySelectorAll('iframe');
+for (var i = 0; i < iframes.length; i++) {
+  iframes[i].parentNode.removeChild(iframes[i]);
+}
 const DataTableWithButtons = () => {
   // ** States
   const [modal, setModal] = useState(false)
@@ -167,7 +170,7 @@ const DataTableWithButtons = () => {
     <Fragment>
       <Card>
         <CardHeader className='flex-md-row flex-column align-md-items-center align-items-start border-bottom'>
-          <CardTitle tag='h4'>DataTable with Buttons</CardTitle>
+          <CardTitle tag='h4'>Property List</CardTitle>
           <div className='d-flex mt-md-0 mt-1'>
             <UncontrolledButtonDropdown>
               <DropdownToggle color='secondary' caret outline>
@@ -197,14 +200,11 @@ const DataTableWithButtons = () => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledButtonDropdown>
-            <Button className='ms-2' color='primary' onClick={handleModal}>
-              <Plus size={15} />
-              <span className='align-middle ms-50'>Add Record</span>
-            </Button>
+
           </div>
         </CardHeader>
         <Row className='justify-content-end mx-0'>
-          <Col className='d-flex align-items-center justify-content-end mt-1' md='6' sm='12'>
+          <Col className='d-flex align-items-center justify-content-end mt-1' md='4' sm='12'>
             <Label className='me-1' for='search-input'>
               Search
             </Label>

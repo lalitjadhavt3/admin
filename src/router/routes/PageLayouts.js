@@ -30,6 +30,14 @@ const PageLayoutRoutes = [
     path: '/page-layout/layout-blank',
     component: lazy(() => import('../../views/ui-elements/page-layouts/LayoutBlank')),
     layout: 'BlankLayout'
+  },
+  {
+    path: '/property',
+    component: lazy(() => import('../../views/property'))
+  },
+  {
+    path: '/addProperty',
+    component: lazy(() => import('../../views/property/addProperty'))
   }
 ]
 

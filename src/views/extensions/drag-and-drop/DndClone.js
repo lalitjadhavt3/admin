@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 // ** Third Party Components
 import classnames from 'classnames'
-import { ReactSortable } from 'react-sortablejs'
 
 // ** Custom Hooks
 import { useRTL } from '@hooks/useRTL'
@@ -83,41 +82,11 @@ const DndClone = () => {
         <Row>
           <Col md='6' sm='12'>
             <h4 className='my-1'>Badge Source 1</h4>
-            <ReactSortable
-              list={list}
-              setList={setList}
-              group={{ name: 'shared-badge-group', pull: 'clone' }}
-              className={classnames('demo-inline-spacing sortable', {
-                'flex-row-reverse': isRtl
-              })}
-            >
-              {list.map((item, index) => {
-                return (
-                  <Badge className='draggable' key={`${item.text}-${index}`} color={item.color} pill>
-                    {item.text}
-                  </Badge>
-                )
-              })}
-            </ReactSortable>
+
           </Col>
           <Col md='6' sm='12'>
             <h4 className='my-1'>Badge Source 2</h4>
-            <ReactSortable
-              list={list2}
-              setList={setList2}
-              group={{ name: 'shared-badge-group', pull: 'clone' }}
-              className={classnames('demo-inline-spacing sortable', {
-                'flex-row-reverse': isRtl
-              })}
-            >
-              {list2.map((item, index) => {
-                return (
-                  <Badge className='draggable' key={`${item.text}-${index}`} color={item.color} pill>
-                    {item.text}
-                  </Badge>
-                )
-              })}
-            </ReactSortable>
+
           </Col>
         </Row>
       </CardBody>

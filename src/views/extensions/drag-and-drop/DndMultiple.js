@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // ** Third Party Components
-import { ReactSortable } from 'react-sortablejs'
+
 
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, CardText, Row, Col, ListGroupItem } from 'reactstrap'
@@ -103,67 +103,39 @@ const DndMultiple = () => {
         <Row>
           <Col md='6' sm='12'>
             <h4 className='my-1'>People Group 1</h4>
-            <ReactSortable
-              tag='ul'
-              className='list-group list-group-flush sortable'
-              group='shared-group'
-              list={listArr1}
-              setList={setListArr1}
+
+            tag='ul'
+            className='list-group list-group-flush sortable'
+            group='shared-group'
+            list={listArr1}
+            setList={setListArr1}
             >
-              {listArr1.map(item => {
-                return (
-                  <ListGroupItem className='draggable' key={item.id}>
-                    <div className='d-flex align-items-center'>
-                      <div>
-                        <img
-                          src={item.img}
-                          className='rounded-circle me-2'
-                          alt='Generic placeholder image'
-                          height='50'
-                          width='50'
-                        />
-                      </div>
-                      <div>
-                        <h5 className='mt-0'>{item.name}</h5>
-                        {item.content}
-                      </div>
+            {listArr1.map(item => {
+              return (
+                <ListGroupItem className='draggable' key={item.id}>
+                  <div className='d-flex align-items-center'>
+                    <div>
+                      <img
+                        src={item.img}
+                        className='rounded-circle me-2'
+                        alt='Generic placeholder image'
+                        height='50'
+                        width='50'
+                      />
                     </div>
-                  </ListGroupItem>
-                )
-              })}
-            </ReactSortable>
+                    <div>
+                      <h5 className='mt-0'>{item.name}</h5>
+                      {item.content}
+                    </div>
+                  </div>
+                </ListGroupItem>
+              )
+            })}
+
           </Col>
           <Col md='6' sm='12'>
             <h4 className='my-1'>People Group 2</h4>
-            <ReactSortable
-              tag='ul'
-              className='list-group list-group-flush sortable'
-              group='shared-group'
-              list={listArr2}
-              setList={setListArr2}
-            >
-              {listArr2.map(item => {
-                return (
-                  <ListGroupItem className='draggable' key={item.id}>
-                    <div className='d-flex align-items-center'>
-                      <div>
-                        <img
-                          src={item.img}
-                          className='rounded-circle me-2'
-                          alt='Generic placeholder image'
-                          height='50'
-                          width='50'
-                        />
-                      </div>
-                      <div>
-                        <h5 className='mt-0'>{item.name}</h5>
-                        {item.content}
-                      </div>
-                    </div>
-                  </ListGroupItem>
-                )
-              })}
-            </ReactSortable>
+
           </Col>
         </Row>
       </CardBody>
