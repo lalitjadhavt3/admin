@@ -11,19 +11,19 @@ const MultipleColumnForm = () => {
       <CardBody>
         <Form>
           <Row>
-            <Col md='6' sm='12' className='mb-1'>
+            <Col md='4' sm='12' className='mb-1'>
               <Label className='form-label' for='nameMulti'>
                 First Name
               </Label>
               <Input type='text' name='name' id='nameMulti' placeholder='First Name' />
             </Col>
-            <Col md='6' sm='12' className='mb-1'>
+            <Col md='4' sm='12' className='mb-1'>
               <Label className='form-label' for='lastNameMulti'>
                 Last Name
               </Label>
               <Input type='text' name='lastname' id='lastNameMulti' placeholder='Last Name' />
             </Col>
-            <Col md='6' sm='12' className='mb-1'>
+            <Col md='4' sm='12' className='mb-1'>
               <Label className='form-label' for='cityMulti'>
                 City
               </Label>
