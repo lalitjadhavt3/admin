@@ -5,7 +5,7 @@ const MultipleColumnForm = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle tag='h4'>Multiple Column</CardTitle>
+        <CardTitle tag='h4'>Add Property</CardTitle>
       </CardHeader>
 
       <CardBody>
